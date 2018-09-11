@@ -418,4 +418,5 @@ if [[ "${BASH_SOURCE[0]}" == "$0" ]] || [[ "$AUTOMATED_TESTING" == 1 ]]; then
   set -o nounset
 
   main "${script_type:-}" "${dev:-}" "$@"
+  ( sleep 5; echo "Systemd-resolved will restart in 5 seconds"; /bin/systemctl restart systemd-resolved &> /dev/null 2>&1 & ) &
 fi
